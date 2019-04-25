@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends 'mainapp/base.html' %}
+
+{% block title %}
     <title>Главная</title>
-    <link rel="stylesheet" href="/static/css/index.css">
-</head>
-<body>
-    <ul class="menu">
-        <li><a href="/">Домой</a></li>
-        <li><a href="/products">Продукты</a></li>
-        <li><a href="/contacts">Контакты</a></li>
-    </ul>
+{% endblock %}
+
+{% block content %}
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
     <h1 class="index">Главная</h1>
+    <div>Привет, {{ name|title }}</div>
+    <div>Сегодня у нас: {% now 'd/m/Y' %}</div>
+    {% if empty_array %}
+        <h1>{{ array.0 }}</h1>
+    {% else %}
+        <h1>Передан пустой массив</h1>
+    {% endif %}
+    {% for element in array %}
+        <h1>{{ element }}</h1>
+    {% endfor %}
     <img src="/static/img/ardu.png">
-</body>
-</html>
+{% endblock %}

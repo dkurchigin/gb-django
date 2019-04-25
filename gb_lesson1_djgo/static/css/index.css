@@ -1,3 +1,7 @@
 .index {
     color: blue;
 }
+
+.active {
+    background-color: CadetBlue;
+}
