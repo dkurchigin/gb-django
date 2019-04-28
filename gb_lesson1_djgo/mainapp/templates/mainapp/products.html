@@ -6,6 +6,7 @@
 
 {% block content %}
     <h1>Продукты</h1>
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
     <div class="catalog">
         {% for product in products %}
             <div class="item">

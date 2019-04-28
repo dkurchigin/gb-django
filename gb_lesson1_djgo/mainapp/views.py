@@ -15,7 +15,13 @@ def main(request):
 
 
 def products(request, pk=None):
-    context = {"links_menu": links_menu, "products": Product.objects.all()}
+    if pk:
+        filter_products = Product.objects.filter(category=pk)
+    else:
+        filter_products = Product.objects.all()
+
+    category_menu = ProductCategory.objects.all()
+    context = {"links_menu": links_menu, "category_menu": category_menu, "products": filter_products}
     return render(request, 'mainapp/products.html', context)
 
 

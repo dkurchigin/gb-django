@@ -1,11 +1,15 @@
-<ul class="links-menu">
-    {% for link in links_menu %}
+<ul class="category_menu">
+    <li>
+        <a href="{% url 'products:index' %}"
+           class="category_menu_a">
+            Все категории
+        </a>
+    </li>
+    {% for category in category_menu %}
         <li>
-            <a href="{% url link.href %}"
-               class="{% if request.resolver_match.url_name == link.href %}
-                        active
-                      {% endif %}">
-                {{ link.name }}
+            <a href="{% url 'category' category.id %}"
+               class="category_menu_a">
+                {{ category.name }}
             </a>
         </li>
     {% endfor %}
