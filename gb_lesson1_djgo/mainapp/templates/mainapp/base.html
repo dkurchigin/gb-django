@@ -6,9 +6,21 @@
     {% block title %}
     {% endblock %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+        .header { background-image: url({% static 'img/fon.jpg' %}); }
+    </style>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        <div class="header">
+           <div class="logo">
+                <a href="{% url 'main' %}"><img src="{% static 'img/logo.png' %}" height="70px" alt="MainLogo"></a>
+            </div>
+            {% include 'mainapp/includes/inc_menu.html' %}
+            <hr>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

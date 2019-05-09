@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from .models import Product, ProductCategory
 
 # Create your views here.
 links_menu = [
     {'href': 'main', 'name': 'Главная'},
-    {'href': 'products', 'name': 'Продукты'},
+    {'href': 'products:index', 'name': 'Продукты'},
     {'href': 'contacts', 'name': 'Контакты'},
 ]
 
@@ -13,8 +14,14 @@ def main(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request):
-    context = {"links_menu": links_menu}
+def products(request, pk=None):
+    if pk:
+        filter_products = Product.objects.filter(category=pk)
+    else:
+        filter_products = Product.objects.all()
+
+    category_menu = ProductCategory.objects.all()
+    context = {"links_menu": links_menu, "category_menu": category_menu, "products": filter_products}
     return render(request, 'mainapp/products.html', context)
 
 

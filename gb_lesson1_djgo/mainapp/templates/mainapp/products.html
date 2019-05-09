@@ -5,6 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'mainapp/includes/inc_categories_menu.html' %}
     <h1>Продукты</h1>
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
+    <div class="catalog">
+        {% for product in products %}
+            <div class="item">
+                <h3>{{ product.name }}</h3>
+                <img src='{{ product.image.url }}' height="150px">
+                <div class="short_desc">{{ product.short_desc }}</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

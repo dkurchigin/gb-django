@@ -1,7 +1,84 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+}
+
 .index {
     color: blue;
 }
 
 .active {
-    background-color: CadetBlue;
+    background-color: Gray;
+}
+
+.simple_menu {
+    margin: 0;
+    padding: 4px;
+}
+
+.simple_menu li {
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+}
+
+.simple_menu a {
+    text-decoration: none;
+    font-weight: bold;
+    color: MediumBlue;
+}
+
+.simple_menu a:hover {
+    color: black;
+}
+
+.logo,
+.menu_block {
+    display: inline-block;
+}
+
+.logo {
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.menu_block {
+    float: right;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+.header hr {
+    clear: both;
+}
+
+.catalog {
+    text-align: center;
+}
+
+.item {
+    margin: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.item a {
+    text-decoration: none;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.short_desc {
+    width: 300px;
+    align: center;
 }
