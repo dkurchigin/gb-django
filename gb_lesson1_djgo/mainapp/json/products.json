@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Одноплатные компьютеры",
+    "name": "Raspberry PI",
+    "image": "..\\media\\products_images\\rpi.jpg",
+    "price": 4000,
+    "short_desc": "Если вы ищете миниатюрный, полноценный и тихий компьютер",
+    "quantity": 1
+  },
+  {
+    "category": "Одноплатные компьютеры",
+    "name": "BeagleBone Black",
+    "image": "..\\media\\products_images\\bbb.jpg",
+    "price": 3000,
+    "short_desc": "BeagleBone Black — обновленная версия миникомпьютера",
+    "quantity": 2
+  },
+  {
+    "category": "Микроконтроллеры",
+    "name": "Arduino UNO",
+    "image": "..\\media\\products_images\\ardu.jpg",
+    "price": 2000,
+    "short_desc": "Arduino Uno — флагманская платформа на базе ATmega328P",
+    "quantity": 3
+  }
+]
