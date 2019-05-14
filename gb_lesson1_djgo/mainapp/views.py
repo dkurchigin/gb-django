@@ -10,7 +10,7 @@ links_menu = [
 
 
 def main(request):
-    context = {"links_menu": links_menu, 'user': {'name': 'дима'}, 'empty_array': [], 'array': [number for number in range(1, 6)]}
+    context = {"links_menu": links_menu, 'empty_array': [], 'array': [number for number in range(1, 6)]}
     return render(request, 'mainapp/index.html', context)
 
 
