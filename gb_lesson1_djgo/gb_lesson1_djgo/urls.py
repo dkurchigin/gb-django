@@ -26,6 +26,7 @@ urlpatterns = [
     re_path(r'^products/(?P<pk>\d+)/$', mainapp.products, name='category'),
     path('contacts', mainapp.contacts, name='contacts'),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
     path('admin/', admin.site.urls, name='admin'),
 ]
 

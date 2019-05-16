@@ -6,6 +6,8 @@
 
 {% block content %}
     <h1>Продукты</h1>
+    <p>Продуктов в корзине: {{ basket_quantity }} </p>
+    <p>На общую сумму {{ total_price }} рублей</p>
     {% include 'mainapp/includes/inc_categories_menu.html' %}
     <div class="catalog">
         {% for product in products %}
@@ -13,6 +15,9 @@
                 <h3>{{ product.name }}</h3>
                 <img src='{{ product.image.url }}' height="150px">
                 <div class="short_desc">{{ product.short_desc }}</div>
+                <a href="{% url 'basket:add' product.pk %}">Добавить в корзину</a>
+                <br>
+                <a href="{% url 'basket:delete' product.pk %}">Удалить из корзины</a>
             </div>
         {% endfor %}
     </div>
