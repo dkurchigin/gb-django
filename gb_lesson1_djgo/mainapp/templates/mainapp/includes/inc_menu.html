@@ -5,9 +5,7 @@
                 <a href="{% url link.href %}"
                    class="{% if request.resolver_match.url_name == link.href %}
                             active
-                          {% elif request.resolver_match.url_name == 'index' and link.href == 'products:index' %}
-                            active
-                          {% elif request.resolver_match.url_name == 'category' and link.href == 'products:index' %}
+                          {% elif request.resolver_match.namespace == 'products' and link.href == 'products:index' %}
                             active
                           {% endif %}">
                     {{ link.name }}
