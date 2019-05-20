@@ -1,0 +1,25 @@
+{% extends 'mainapp/base.html' %}
+{% load custom_tags %}
+
+{% block title %}
+    <title>{{ detail_product.name }}</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Продукты</h1>
+    <p>Продуктов в корзине: {{ request.user|basket_total_quantity }} </p>
+    <p>На общую сумму {{ request.user|basket_total_cost }} рублей</p>
+    {% include 'mainapp/includes/inc_categories_menu.html' %}
+    <div class="product_info">
+        <h3>{{ detail_product.name }}</h3>
+        <img src='{{ detail_product.image.url }}' height="250px">
+        <div class="short_desc">{{ detail_product.short_desc }}</div>
+        <br>
+        <br>
+        <a href="{% url 'basket:add' detail_product.pk %}">Добавить в корзину</a>
+        <br>
+        <a href="{% url 'basket:delete' detail_product.pk %}">Удалить из корзины</a>
+        <br>
+        <br>
+    </div>
+{% endblock %}

@@ -1,11 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
-from authapp.forms import ShopUserLoginForm
 from django.contrib import auth
 from django.urls import reverse
 from authapp.forms import ShopUserRegisterForm, ShopUserEditForm
-from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
-from .models import ShopUser
 
 
 def register(request):
@@ -29,18 +25,20 @@ def register(request):
 def login(request):
     title = 'вход'
 
-    #login_form = ShopUserLoginForm(data=request.POST)
-    #if request.method == 'POST' and login_form.is_valid():
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+        next = request.POST['next']
 
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
-            return HttpResponseRedirect(reverse('main'))
+            if next == 'None':
+                return HttpResponseRedirect(reverse('main'))
+            else:
+                return HttpResponseRedirect(reverse('mainapp:index'))
 
-    context = {'title': title}
+    context = {'title': title, 'next': request.GET.get('next')}
     return render(request, 'authapp/login.html', context)
 
 
