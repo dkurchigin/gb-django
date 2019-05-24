@@ -11,13 +11,12 @@
     <p>На общую сумму {{ request.user|basket_total_cost }} рублей</p>
     {% include 'mainapp/includes/inc_categories_menu.html' %}
     <div class="catalog">
-        {% for product in products %}
-            <div class="item">
-                <h3>{{ product.name }}</h3>
-                <img src='{{ product.image.url }}' height="150px">
-                <div class="short_desc">{{ product.short_desc }}</div>
-                <a href="{% url 'mainapp:detail' product.pk %}">Просмотреть товар</a>
-            </div>
-        {% endfor %}
+        <div class="item">
+            <h3>{{ hot_product.name }}</h3>
+            <img src='{{ hot_product.image.url }}' height="150px">
+            <div class="short_desc">{{ hot_product.short_desc }}</div>
+            <h1 style="color: red;">Горячее предложение</h1>
+            <a href="{% url 'mainapp:detail' hot_product.pk %}">Просмотреть товар</a>
+        </div>
     </div>
 {% endblock %}

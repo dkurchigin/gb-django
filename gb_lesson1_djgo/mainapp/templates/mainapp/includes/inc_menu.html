@@ -7,6 +7,8 @@
                             active
                           {% elif request.resolver_match.namespace == 'products' and link.href == 'products:index' %}
                             active
+                          {% elif request.resolver_match.namespace == 'basket' and link.href == 'basket:read' %}
+                            active
                           {% endif %}">
                     {{ link.name }}
                 </a>

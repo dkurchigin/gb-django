@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductCategory
-from basketapp.models import BasketSlot
 
 # Create your views here.
 links_menu = [
     {'href': 'main', 'name': 'Главная'},
     {'href': 'products:index', 'name': 'Продукты'},
     {'href': 'contacts', 'name': 'Контакты'},
+    {'href': 'basket:read', 'name': 'Корзина'},
 ]
 
 
@@ -15,21 +15,39 @@ def main(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def products(request, pk=None):
-    basket = []
-    if request.user.is_authenticated:
-        basket = BasketSlot.objects.filter(user=request.user)
-    total_quantity = sum(list(map(lambda basket_slot: basket_slot.quantity, basket)))
-    total_price = sum(list(map(lambda basket_slot: basket_slot.product.price * basket_slot.quantity, basket)))
-
-    if pk:
-        filter_products = Product.objects.filter(category=pk)
-    else:
-        filter_products = Product.objects.all()
-
+def detail(request, pk=None):
     category_menu = ProductCategory.objects.all()
-    context = {"links_menu": links_menu, "category_menu": category_menu, "products": filter_products, "basket_quantity": total_quantity, "total_price": total_price}
-    return render(request, 'mainapp/products.html', context)
+
+    detail_product = get_object_or_404(Product, pk=pk)
+    context = {
+        "links_menu": links_menu,
+        "category_menu": category_menu,
+        "detail_product": detail_product,
+    }
+    return render(request, 'mainapp/detail.html', context)
+
+
+def products(request, pk=None):
+    category_menu = ProductCategory.objects.all()
+
+    if pk or pk == 0:
+        filter_products = Product.objects.all()
+        if pk:
+            filter_products = Product.objects.filter(category=pk)
+        context = {
+            "links_menu": links_menu,
+            "category_menu": category_menu,
+            "products": filter_products
+        }
+        return render(request, 'mainapp/products.html', context)
+    else:
+        hot_product = Product.objects.filter(is_hot=True).first()
+        context = {
+            "links_menu": links_menu,
+            "category_menu": category_menu,
+            "hot_product": hot_product
+        }
+        return render(request, 'mainapp/hot_product.html', context)
 
 
 def contacts(request):
