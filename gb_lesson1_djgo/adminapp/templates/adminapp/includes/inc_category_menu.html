@@ -1,0 +1,16 @@
+<ul class="category_menu">
+    <li>
+        <a href="{% url 'admin_custom:products' %}"
+           class="category_menu_a">
+            Все категории
+        </a>
+    </li>
+    {% for category in category_menu %}
+        <li>
+            <a href="{% url 'admin_custom:products_by_category' category.pk %}"
+               class="category_menu_a">
+                {{ category.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

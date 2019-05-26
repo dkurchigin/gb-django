@@ -11,4 +11,4 @@ class ShopUser(AbstractUser):
     age = models.PositiveIntegerField(verbose_name='возраст')
 
     def __str__(self):
-        return "{} | Is Active:{}".format(self.username, self.is_active)
+        return self.username

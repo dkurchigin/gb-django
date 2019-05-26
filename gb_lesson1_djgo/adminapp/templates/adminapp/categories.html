@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>Доступные категории:</h1>
+<ul>
+    {% for object in object_list %}
+        <a href="{% url 'admin_custom:category_update' object.pk %}">{{ object.name }}</a>
+    {% endfor %}
+</ul>
+<h1>Создание категории:</h1>
+<a href="{% url 'admin_custom:category_create' %}">Создать категорию</a>
+</body>
+</html>

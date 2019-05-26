@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h1>Создание пользователя:</h1>
+<form class="form_user_update" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Создать">
+    <br>
+    <a href="{% url 'admin_custom:users' %}">Назад</a>
+</form>
+</body>
+</html>
