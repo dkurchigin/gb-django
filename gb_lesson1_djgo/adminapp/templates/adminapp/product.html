@@ -1,0 +1,19 @@
+{% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% include 'adminapp/includes/inc_category_menu.html' %}
+<h1>{{ object.name }}</h1>
+<img src='{{ object.image|image_clear_dots }}' height="250px">
+<p>{{ object.short_desc }}</p>
+<br>
+<a href="{% url 'admin_custom:product_update' object.pk %}">Редактировать</a>
+<br>
+<a href="{% url 'adminapp:product_delete' object.pk %}">Удалить продукт</a>
+</body>
+</html>

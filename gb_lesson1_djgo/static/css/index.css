@@ -83,3 +83,17 @@ body {
     width: 50%;
     text-align: center;
 }
+
+.user_info a {
+    float: left;
+}
+
+.user_info p {
+    color: red;
+    margin: 0;
+}
+
+.user_li {
+    list-style-type: none;
+    clear: both;
+}

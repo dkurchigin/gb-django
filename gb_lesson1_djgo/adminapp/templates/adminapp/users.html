@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+<h1>Пользователи в системе:</h1>
+<ul>
+    {% for object in object_list %}
+        <li class="user_li">
+            <div class="user_info">
+                <a href="{% url 'admin_custom:user_update' object.pk %}">{{ object.username }}</a>
+                {% if not object.is_active %}
+                    <p>&nbsp;- не активен</p>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+<h1 style="clear: both">Создать пользователя:</h1>
+<a href="{% url 'admin_custom:user_create' %}">Создать</a>
+</body>
+</html>
